@@ -16,7 +16,6 @@ router.get('/', async function(req, res) {
             groupArray.push(`${element.name}`);
         });
 
-
         var nameAndGroup = ""; 
         memberObject.forEach(element => {
         nameAndGroup += `<br> ${element.name} : ${groupArray[element.groupIdx-1]}`;
