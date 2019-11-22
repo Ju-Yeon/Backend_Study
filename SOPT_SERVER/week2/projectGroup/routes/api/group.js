@@ -29,15 +29,19 @@ router.get('/', async function(req, res) {
 
 
 router.get('/:groupIdx', async function(req, res, next) {
-    const groupIdx = req.params.groupIdx;
-    const groupArray = await read(filePath);
+    try{
+        const groupIdx = req.params.groupIdx;
+        const groupArray = await read(member);
 
-    var groupMember = `${groupIdx}조`;
-    groupArray.forEach(element=>{
-        if(element.groupIdx == groupIdx)
-        groupMember += `<br> ${element.name}`;
-    });
-    res.status(200).send(groupMember);
+        var groupMember = `${groupIdx}조`;
+        groupArray.forEach(element=>{
+            if(element.groupIdx == groupIdx)
+            groupMember += `<br> ${element.name}`;
+        });
+        res.status(200).send(groupMember);
+    }catch{
+        console.log(`err: ${err}`)
+    }
 
 });
 
